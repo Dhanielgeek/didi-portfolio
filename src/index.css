@@ -45,6 +45,88 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
     background: var(--gold);
     color: var(--ink)
 }
+
+
+.site-footer {
+  margin-top: 0;
+  padding: 0; /* cancels any vertical padding .section-dark adds */
+  font-size: 0.95rem;
+}
+
+.site-footer a {
+  color: inherit;
+  text-decoration: none;
+  opacity: 0.75;
+  transition: opacity 0.2s ease;
+}
+
+.site-footer a:hover {
+  opacity: 1;
+}
+
+.footer-main {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 2.5rem;
+  padding: 4rem 0 2.5rem;
+}
+
+.footer-logo {
+  font-size: 1.25rem;
+  font-weight: 700;
+  opacity: 1 !important;
+}
+
+.footer-tagline {
+  margin-top: 0.75rem;
+  max-width: 32ch;
+  line-height: 1.6;
+  opacity: 0.7;
+}
+
+.footer-col h4 {
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  color: inherit;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.footer-bottom {
+  border-top: 1px solid currentColor;
+  border-top-color: color-mix(in srgb, currentColor 15%, transparent);
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem 0;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 720px) {
+  .footer-main {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+
 .site-header {
     position: fixed;
     inset: 0 0 auto;

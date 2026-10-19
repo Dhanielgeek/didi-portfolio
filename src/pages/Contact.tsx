@@ -6,18 +6,18 @@ type Status = 'idle' | 'sending' | 'sent' | 'error'
 interface Values {
   name: string
   email: string
-  budget: string
+  // budget: string
   message: string
 }
 
 type Errors = Partial<Record<keyof Values, string>>
 
-const budgets = [
-  'Under $1,000 a month',
-  '$1,000 to $5,000 a month',
-  'Over $5,000 a month',
-  'Not sure yet',
-]
+// const budgets = [
+//   'Under $1,000 a month',
+//   '$1,000 to $5,000 a month',
+//   'Over $5,000 a month',
+//   'Not sure yet',
+// ]
 
 function validate(values: Values): Errors {
   const errors: Errors = {}
@@ -41,7 +41,7 @@ export default function Contact() {
   const [values, setValues] = useState<Values>({
     name: '',
     email: '',
-    budget: budgets[3],
+
     message: '',
   })
 
@@ -95,7 +95,7 @@ export default function Contact() {
       } else {
         const body = `${values.message}
 
-Budget: ${values.budget}
+
 From: ${values.name} (${values.email})`
 
         const subject = `Project enquiry from ${values.name}`
@@ -212,7 +212,7 @@ From: ${values.name} (${values.email})`
                 )}
               </div>
 
-              <div>
+              {/* <div>
                 <label htmlFor="budget">Monthly marketing budget</label>
 
                 <select
@@ -227,7 +227,7 @@ From: ${values.name} (${values.email})`
                     </option>
                   ))}
                 </select>
-              </div>
+              </div> */}
 
               <div>
                 <label htmlFor="message">What are you working on?</label>
