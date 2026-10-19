@@ -1,6 +1,7 @@
 import { facts, profile, services } from "../data";
 import portrait from "../assets/myself.jpg.jpeg";
 import Reveal from "../components/Reval";
+import resume from "../assets/Ndidi_Amaka_General_CV.pdf";
 
 export default function About() {
   return (
@@ -76,7 +77,7 @@ export default function About() {
           </dl>
 
           <a
-            href="/resume.pdf"
+            href={resume}
             className="button button-main"
             style={{ marginTop: "40px" }}
             target="_blank"
