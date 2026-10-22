@@ -430,59 +430,165 @@ h2 {
     padding: 0;
     cursor: pointer
 }
+
 .project-art {
-    aspect-ratio: 1.32;
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    align-items: end;
-    padding: 22px;
-    background: var(--art-bg);
-    color: var(--paper);
-    transition: transform .3s
+  aspect-ratio: 1.32;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: end;
+  padding: 22px;
+  background: var(--art-bg);
+  color: var(--paper);
+  isolation: isolate;
+  transition: transform 0.3s;
 }
+
+.modal-art {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.modal-art .project-media-image,
+.modal-art .project-media-video {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.modal-art .project-media-video[controls] {
+  z-index: 0;
+}
+
+.media-fallback {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  color: var(--paper);
+  background: var(--art-bg);
+  text-align: center;
+}
+
 .project-card:nth-child(3n + 2) .project-art {
-    aspect-ratio: 1
+  aspect-ratio: 1;
 }
+
 .project-card:nth-child(3n) .project-art {
-    aspect-ratio: 1.12
+  aspect-ratio: 1.12;
 }
+
 .project-card:hover .project-art {
-    transform: translateY(-4px)
+  transform: translateY(-4px);
 }
-.project-art:before {
-    content: '';
-    position: absolute;
-    width: 70%;
-    aspect-ratio: 1;
-    right: -7%;
-    top: -24%;
-    border: 1px solid #ffffff46;
-    border-radius: 50%;
-    box-shadow: 0 0 0 20px #ffffff08,0 0 0 45px #ffffff08
+
+/* Actual project images and videos */
+.project-media-image,
+.project-media-video {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
+
+/* Reveal the gradient and artwork details together on hover or keyboard focus. */
+.project-art::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.35) 0%,
+    transparent 35%,
+    transparent 55%,
+    rgba(0, 0, 0, 0.65) 100%
+  );
+  pointer-events: none;
+}
+
+/* Decorative circle */
+.project-art::before {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  width: 70%;
+  aspect-ratio: 1;
+  right: -7%;
+  top: -24%;
+  border: 1px solid #ffffff46;
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 20px #ffffff08,
+    0 0 0 45px #ffffff08;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.art-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+}
+
+.project-card:hover .project-art::after,
+.project-card:focus-visible .project-art::after,
+.project-card:hover .project-art::before,
+.project-card:focus-visible .project-art::before {
+  opacity: 1;
+}
+
+.project-card:hover .art-overlay,
+.project-card:focus-visible .art-overlay {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
 .art-label {
-    position: absolute;
-    left: 22px;
-    top: 22px;
-    text-transform: uppercase;
-    font-size: 10px;
-    letter-spacing: .16em;
-    color: #ffffffbd
+  position: relative;
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  color: #ffffffbd;
 }
+
 .art-title {
-    position: relative;
-    font: 600 clamp(25px,3vw,42px)/1 'Playfair Display',serif;
-    max-width: 85%;
+  position: relative;
+  font: 600 clamp(25px, 3vw, 42px)/1 'Playfair Display', serif;
+  max-width: 85%;
+  overflow-wrap: anywhere;
 }
+
 .art-index {
-    position: absolute;
-    right: 20px;
-    bottom: 20px;
-    font-size: 11px;
-    letter-spacing: .12em;
-    color: #ffffffab
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: #ffffffab;
 }
+
 .project-meta {
     display: flex;
     justify-content: space-between;
@@ -928,6 +1034,9 @@ h2 {
         will-change: auto
     }
     .hero-portrait img,.button,.button span,.project-art,.art-title,.filters button,.quote-list button,.nav-cta {
+        transition: none
+    }
+    .art-overlay,.project-art::before,.project-art::after {
         transition: none
     }
 }
