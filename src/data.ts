@@ -293,7 +293,7 @@ export const projects: Project[] = [
     channels: ['AI Videos'],
     media: {
       kind: 'video',
-      src: asset('Captions_27D7EB.mp4'),
+      src: "https://res.cloudinary.com/dfkzskshk/video/upload/v1793012277/Captions_27D7EB_bxkxot.mp4",
     },
     ratio: 'portrait',
     tone: ['#D9A441', '#7A5A1E'],
@@ -313,7 +313,7 @@ export const projects: Project[] = [
     channels: ['AI Videos'],
     media: {
       kind: 'video',
-      src: asset('gemini_generated_video_FFBDEFA5.mp4'),
+      src: "https://res.cloudinary.com/dfkzskshk/video/upload/v1793013005/Yago_Content_4_mvbahz.mp4",
     },
     ratio: 'portrait',
     tone: ['#D9A441', '#2A1F1B'],
@@ -415,7 +415,7 @@ export const projects: Project[] = [
     channels: ['Reels'],
     media: {
       kind: 'video',
-      src: asset('Yago Content (4).mp4'),
+      src: "https://res.cloudinary.com/dfkzskshk/video/upload/v1793012049/Yago_Content_fyxofu.mov",
     },
     ratio: 'portrait',
     tone: ['#D9A441', '#2A1F1B'],
@@ -435,7 +435,7 @@ export const projects: Project[] = [
     channels: ['Videos'],
     media: {
       kind: 'video',
-      src: asset('The Red Spot Initiative Video Pitch.mp4'),
+      src: "https://res.cloudinary.com/dfkzskshk/video/upload/v1793012806/Gift_for_Ciel_Ad_zdkpmt.mp4",
     },
     ratio: 'portrait',
     tone: ['#D9A441', '#2A1F1B'],
@@ -455,7 +455,8 @@ export const projects: Project[] = [
     channels: ['Videos'],
     media: {
       kind: 'video',
-      src: asset('Bunmi for Ciel Ad.mov'),
+       src: 'https://res.cloudinary.com/dfkzskshk/video/upload/v1793010132/Bunmi_for_Ciel_Ad_oohb8l.mov',
+
     },
     ratio: 'portrait',
     tone: ['#D9A441', '#2A1F1B'],
