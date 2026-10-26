@@ -198,7 +198,7 @@ export default function Projects() {
             <div>
               <p className="section-kicker">Selected work · 2024—26</p>
 
-              <h2>Work with a point of view.</h2>
+              <h2>Words move people. The works does the rest.</h2>
 
               <p className="section-intro" style={{ marginTop: 16 }}>
                 A selection of campaigns, creative and growth work. Choose a

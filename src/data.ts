@@ -159,8 +159,8 @@ function asset(filename: string): string {
 export const projects: Project[] = [
   {
     id: 'abba-spikenard',
-    title: 'Anointing Oil Product Imagery',
-    client: 'Abba Jerusalem',
+    title: 'AI product replica',
+    client: 'Believer’s bookshop',
 
     summary:
       'A product image for Abba Jerusalem’s Spikenard anointing prayer oil, presented with its matching packaging.',
@@ -179,8 +179,8 @@ export const projects: Project[] = [
   },
   {
     id: 'faith-apparel-concepts',
-    title: 'Faith Inspired Apparel Concepts',
-    client: 'Unspecified brand',
+    title: 'AI product replica',
+    client: 'Believer’s bookshop',
 
     summary:
       'A set of faith themed T shirt concepts presented together as an apparel range.',
