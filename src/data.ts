@@ -159,7 +159,7 @@ function asset(filename: string): string {
 export const projects: Project[] = [
   {
     id: 'abba-spikenard',
-    title: 'AI product replica',
+    title: 'Anointing Prayer Oil',
     client: 'Believer’s bookshop',
 
     summary:
@@ -167,7 +167,7 @@ export const projects: Project[] = [
     result: '',
     details: [
       'AI-assisted product visual',
-      'Bottle and retail packaging shown together',
+      'Created an AI-generated product replica showcasing the packaging, label details, and presentation of Abba Jerusalem’s Rose of Sharon Anointing Prayer Oil for the brand’s Instagram page',
     ],
     channels: ['AI Images'],
     media: {
@@ -179,7 +179,7 @@ export const projects: Project[] = [
   },
   {
     id: 'faith-apparel-concepts',
-    title: 'AI product replica',
+    title: 'Woman’s Study Bible',
     client: 'Believer’s bookshop',
 
     summary:
@@ -187,7 +187,7 @@ export const projects: Project[] = [
     result: '',
     details: [
       'AI generated apparel mockup',
-      'Multiple graphic directions in one image',
+      'Produced AI-generated product imagery featuring the Woman’s Study Bible collection, highlighting its colourful covers, distinctive designs, and premium presentation.',
     ],
     channels: ['AI Images'],
     media: {
@@ -198,16 +198,16 @@ export const projects: Project[] = [
     tone: ['#D9A441', '#2A1F1B'],
   },
   {
-    id: 'faith-mug-concept',
-    title: 'Inspirational Drinkware Mockup',
-    client: 'Unspecified brand',
+    id: 'website banner',
+    title: 'Website Banner',
+    client: 'Believer’s Bookshop',
 
     summary:
-      'A product mockup featuring an inspirational phrase on a ceramic mug.',
+      'Designed a promotional website banner for a faith-inspired brand, combining bold typography, product imagery, and a clear call to action to create an engaging, brand-aligned shopping experience.',
     result: '',
     details: [
-      'AI generated product mockup',
-      'Typography applied to a lifestyle product',
+      'Designed a promotional website banner for a faith-inspired brand, combining bold typography, product imagery, and a clear call to action to create an engaging, brand-aligned shopping experience.',
+    
     ],
     channels: ['Graphics'],
     media: {
@@ -219,15 +219,15 @@ export const projects: Project[] = [
   },
   {
     id: 'yago-milkshake-labels',
-    title: 'Milkshake Product Label Concepts',
+    title: 'Social Media Graphics',
     client: 'Yago Cakes',
 
     summary:
-      'A coordinated set of chocolate, strawberry and vanilla milkshake product visuals carrying the Yago Cakes identity.',
+      'Created a vibrant Monday-themed Instagram graphic featuring a stack of donuts to kick-start the week with a sweet visual treat, boost audience engagement, and reinforce the bakery’s brand presence.',
     result: '',
     details: [
-      'Three flavour variations',
-      'Product naming and packaging visual direction',
+      'Created a vibrant Monday-themed Instagram graphic featuring a stack of donuts to kick-start the week with a sweet visual treat, boost audience engagement, and reinforce the bakery’s brand presence.',
+    
     ],
     channels: ['Graphics'],
     media: {
@@ -237,58 +237,56 @@ export const projects: Project[] = [
     ratio: 'square',
     tone: ['#713F28', '#D9A441'],
   },
-  {
-    id: 'zoborific-social-creatives',
-    title: 'Zoborific Social Media Creatives',
-    client: 'Zoborific Sips',
+
+  //   {
+  //   id: 'yago-milkshakes-labels',
+  //   title: 'Vanilla Milkshake Label Design',
+  //   client: 'Yago Cakes',
    
-    summary:
-      'A small social content set for Zoborific Sips, including a customer review layout and a product fact graphic.',
-    result: '',
-    details: [
-      'Customer review post design',
-      'Product focused fact graphic',
-    ],
-    channels: ['Graphics'],
-    media: {
-      kind: 'image',
-      src: asset('Vanilla Milkshake Label.png'),
-    },
-    ratio: 'square',
-    tone: ['#7A2433', '#E8E0D4'],
-  },
+  //   summary:
+  //     'Designed a vanilla milkshake label featuring a clean, appealing visual style that reflects the flavour and complements the bakery’s brand identity.',
+  //   result: '',
+  //   details: [
+  //     'Designed a vanilla milkshake label featuring a clean, appealing visual style that reflects the flavour and complements the bakery’s brand identity',
+  //   ],
+  //   channels: ['Graphics'],
+  //   media: {
+  //     kind: 'image',
+  //     src: asset('vanillamilke.png'),
+  //   },
+  //   ratio: 'square',
+  //   tone: ['#7A2433', '#E8E0D4'],
+  // },
   {
-    id: 'believers-bookshop-social',
-    title: 'Bookshop Promotional Graphics',
-    client: 'Believer’s Bookshop',
+    id: 'yago-milkshakes-labels',
+    title: 'Strawberry Milkshake Label Design',
+    client: 'Yago Cakes',
 
     summary:
-      'Promotional social graphics highlighting customer feedback, children’s Bibles and devotional reading.',
+      'Created a strawberry milkshake label using flavour-inspired visuals and cohesive branding to give the product a fresh, appetising appeal.',
     result: '',
     details: [
-      'Customer feedback creative',
-      'Book recommendation layouts',
-      'Seasonal promotional graphic',
+      'Created a strawberry milkshake label using flavour-inspired visuals and cohesive branding to give the product a fresh, appetising appeal.'
     ],
     channels: ['Graphics',],
     media: {
       kind: 'image',
-      src: asset('Strawberry Milkshake Label.png'),
+      src: asset('strawberrymilk.png'),
     },
     ratio: 'portrait',
     tone: ['#356486', '#F2B632'],
   },
   {
-    id: 'yago-cakes-reel',
-    title: 'Yago Cakes Short Form Reel',
-    client: 'Yago Cakes',
+    id: 'tenancy video',
+    title: 'Tenancy Video',
+    client: 'Experimental Project',
 
     summary:
-      'A short form video from the Yago Cakes reel collection.',
+      'An experimental AI-generated talking-head video exploring tenancy agreements through engaging, informative digital storytelling. This project explores how AI avatars can simplify complex information and make educational content more accessible.',
     result: '',
     details: [
-      'Vertical social video',
-      'Part of a set of related Yago Cakes reels',
+      'An experimental AI-generated talking-head video exploring tenancy agreements through engaging, informative digital storytelling. This project explores how AI avatars can simplify complex information and make educational content more accessible.',
+    
     ],
     channels: ['AI Videos'],
     media: {
@@ -299,21 +297,21 @@ export const projects: Project[] = [
     tone: ['#D9A441', '#7A5A1E'],
   },
   {
-    id: 'ciel-customer-interview',
-    title: 'Customer Interview Video',
-    client: 'Ciel',
+    id: 'print motion',
+    title: 'Print in Motion',
+    client: 'Experimental Project',
 
     summary:
-      'An interview video featuring a Ciel customer, presented as a brand testimonial piece.',
+      'An AI-generated video featuring a printer printing a photograph of a fashion model wearing a dress, blending fashion imagery with realistic everyday motion to create a simple, visually engaging concept.',
     result: '',
     details: [
-      'Customer interview',
-      'Branded video content',
+      'An AI-generated video featuring a printer printing a photograph of a fashion model wearing a dress, blending fashion imagery with realistic everyday motion to create a simple, visually engaging concept.',
+     
     ],
     channels: ['AI Videos'],
     media: {
       kind: 'video',
-      src: "https://res.cloudinary.com/dfkzskshk/video/upload/v1793013005/Yago_Content_4_mvbahz.mp4",
+      src: "https://res.cloudinary.com/dfkzskshk/video/upload/v1793103411/gemini_generated_video_FFBDEFA5_pyxole.mp4",
     },
     ratio: 'portrait',
     tone: ['#D9A441', '#2A1F1B'],
@@ -322,15 +320,14 @@ export const projects: Project[] = [
 
     {
     id: 'bookshop-promotional-graphics',
-    title: 'Bookshop Promotional Graphics',
+    title: 'Customer Review Graphic',
     client: 'Believer’s Bookshop',
 
     summary:
-      'A short form video asset from the AI Content collection; client and campaign context were not included with the file.',
+      'Designed an Instagram graphic showcasing customer feedback, using a clean, brand-aligned layout to build trust, highlight customer satisfaction, and strengthen the bookshop’s online presence.',
     result: '',
     details: [
-      'Video creative',
-      'Client and campaign purpose not identified in source materials',
+      'Designed an Instagram graphic showcasing customer feedback, using a clean, brand-aligned layout to build trust, highlight customer satisfaction, and strengthen the bookshop’s online presence.',
     ],
     channels: ['Graphics'],
     media: {
@@ -342,15 +339,14 @@ export const projects: Project[] = [
   },
     {
     id: 'church-event-creative',
-    title: 'Church Event Creative',
-    client: 'Church campaign',
+    title: '“We Are Open” Social Media Graphic',
+    client: 'Believer’s Bookshop',
   
     summary:
-      'A short form video asset from the AI Content collection; client and campaign context were not included with the file.',
+      'Designed an Instagram announcement graphic to communicate the bookshop’s availability, combining clear messaging and brand-aligned visuals to keep customers informed and encourage visits and purchases.',
     result: '',
     details: [
-      'Video creative',
-      'Client and campaign purpose not identified in source materials',
+      'Designed an Instagram announcement graphic to communicate the bookshop’s availability, combining clear messaging and brand-aligned visuals to keep customers informed and encourage visits and purchases.',
     ],
     channels: ['Graphics'],
     media: {
@@ -362,15 +358,14 @@ export const projects: Project[] = [
   },
     {
     id: 'easter-day-creative',
-    title: 'Easter Day Creative',
-    client: 'Church campaign',
+    title: 'Happy Easter Graphic',
+    client: 'Believer’s Bookshop',
 
     summary:
-      'A short form video asset from the AI Content collection; client and campaign context were not included with the file.',
+      'Created an Easter-themed Instagram graphic celebrating the resurrection of Christ, combining festive visuals and brand-aligned design to share the message of hope, faith, and renewal with the bookshop’s online community.',
     result: '',
     details: [
-      'Video creative',
-      'Client and campaign purpose not identified in source materials',
+      'Created an Easter-themed Instagram graphic celebrating the resurrection of Christ, combining festive visuals and brand-aligned design to share the message of hope, faith, and renewal with the bookshop’s online community.',
     ],
     channels: ['Graphics'],
     media: {
@@ -382,35 +377,33 @@ export const projects: Project[] = [
   },
     {
     id: 'yago-content-reel',
-    title: 'Yago Content Reel',
+    title: 'Cake Transition Reel ',
     client: 'Yago Cakes',
 
     summary:
-      'A short form video asset from the AI Content collection; client and campaign context were not included with the file.',
+      'Shot and edited a creative cake transition reel using smooth visual transitions to showcase the cake in an engaging, eye-catching format that highlights the bakery’s products and strengthens its social media presence.',
     result: '',
     details: [
-      'Video creative',
-      'Client and campaign purpose not identified in source materials',
+     'Shot and edited a creative cake transition reel using smooth visual transitions to showcase the cake in an engaging, eye-catching format that highlights the bakery’s products and strengthens its social media presence.',
     ],
     channels: ['Reels'],
     media: {
       kind: 'video',
-      src: asset('Yago Content .mov'),
+      src: "https://res.cloudinary.com/dfkzskshk/video/upload/v1793013005/Yago_Content_4_mvbahz.mp4",
     },
     ratio: 'portrait',
     tone: ['#D9A441', '#2A1F1B'],
   },
     {
     id: 'yago-content-reel-four',
-    title: 'Yago Content Reel',
+    title: 'Cake Decoration Process Reel',
     client: 'Yago Cakes',
 
     summary:
-      'A short form video asset from the AI Content collection; client and campaign context were not included with the file.',
+      'Shot and edited a behind-the-scenes reel showcasing the cake decoration process, capturing the artistry and intricate finishing touches to highlight the bakery’s craftsmanship and engage its social media audience.',
     result: '',
     details: [
-      'Video creative',
-      'Client and campaign purpose not identified in source materials',
+      'Shot and edited a behind-the-scenes reel showcasing the cake decoration process, capturing the artistry and intricate finishing touches to highlight the bakery’s craftsmanship and engage its social media audience.',
     ],
     channels: ['Reels'],
     media: {
@@ -421,16 +414,15 @@ export const projects: Project[] = [
     tone: ['#D9A441', '#2A1F1B'],
   },
     {
-    id: 'red-spot-video-pitch',
-    title: 'The Red Spot Initiative Video Pitch',
-    client: 'The Red Spot Initiative',
+    id: 'ciel-consulting',
+    title: 'Promotional Ad Video 1',
+    client: 'Ciel Consulting',
 
     summary:
-      'A short form video asset from the AI Content collection; client and campaign context were not included with the file.',
+      'Created and edited a promotional video for a certification and consulting company, highlighting its services and communicating key offerings through engaging visual storytelling.',
     result: '',
     details: [
-      'Video creative',
-      'Client and campaign purpose not identified in source materials',
+      'Created and edited a promotional video for a certification and consulting company, highlighting its services and communicating key offerings through engaging visual storytelling.',
     ],
     channels: ['Videos'],
     media: {
@@ -442,15 +434,14 @@ export const projects: Project[] = [
   },
     {
     id: 'bunmi-ciel-ad',
-    title: 'Bunmi for Ciel Ad',
-    client: 'Ciel',
+    title: 'Promotional Ad Video 2',
+    client: 'Ciel Consulting',
 
     summary:
-      'A short form video asset from the AI Content collection; client and campaign context were not included with the file.',
+      'Produced a second social media ad video designed to showcase the company’s professional offerings, communicate value to its target audience, and strengthen its digital brand presence.',
     result: '',
     details: [
-      'Video creative',
-      'Client and campaign purpose not identified in source materials',
+      'Produced a second social media ad video designed to showcase the company’s professional offerings, communicate value to its target audience, and strengthen its digital brand presence.',
     ],
     channels: ['Videos'],
     media: {
@@ -473,19 +464,18 @@ export const testimonials: Testimonial[] = [
   {
     name: 'Khalia Oluwatoba',
     role: 'CEO, Lormami',
-    quote:
-      'She told us which of our ideas to drop in the first week. Two months later our cost per order was the lowest it had ever been.',
+    quote: "She kept our content organised, consistent, and aligned with our brand. Working with her was seamless!"
   },
   {
     name: 'Nkiruka Ogechukwu',
     role: 'MD, Eden Anchor Ltd',
     quote:
-      'I stopped dreading the monthly report. It was one page, it was honest, and it always said what to do next.',
+      "She is patient, responsive, and attentive to our needs. She makes every interaction smooth and ensures clients feel heard and supported"
   },
   {
     name: 'Nesta F.',
     role: 'Creative Director, Nesta Tribe Concept',
     quote:
-      'Ndidi has been an outstanding community manager and admin for Nesta Tribe. She brings heart and structure to everything—whether it’s managing our online subgroups, keeping members engaged, or handling internal communications. Her presence has truly strengthened the sense of community within the tribe.',
+      'Ndidi has been an outstanding community manager and admin for Nesta Tribe. She brings heart and structure to everything.',
   },
 ];

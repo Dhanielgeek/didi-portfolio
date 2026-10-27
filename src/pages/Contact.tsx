@@ -230,7 +230,7 @@ From: ${values.name} (${values.email})`
               </div> */}
 
               <div>
-                <label htmlFor="message">What are you working on?</label>
+                <label htmlFor="message">Leave a Message</label>
 
                 <textarea
                   id="message"

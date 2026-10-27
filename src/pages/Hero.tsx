@@ -12,7 +12,7 @@ export default function Hero() {
           </p>
 
           <h1>
-            Good solutions
+            Good Results
             <br />
             start with <em>good questions.</em>
           </h1>
