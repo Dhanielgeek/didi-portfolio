@@ -14,15 +14,23 @@ const FILTERS = [
 
 type Filter = (typeof FILTERS)[number]
 
+
 function matches(project: Project, filter: Filter): boolean {
   if (filter === 'All') return true
 
+  // Show only projects explicitly classified as regular videos.
   if (filter === 'Videos') {
-    return project.media.kind === 'video'
+    return (
+      project.media.kind === 'video' &&
+      project.channels.includes('Videos')
+    )
   }
 
-  return project.channels.some((channel) => String(channel) === filter)
+  // AI Videos, Reels, Graphics, and AI Images
+  // appear only in their respective categories.
+  return project.channels.includes(filter)
 }
+
 
 
 function Art({
@@ -196,13 +204,12 @@ export default function Projects() {
         <Reveal>
           <div className="section-head">
             <div>
-              <p className="section-kicker">Selected work · 2024—26</p>
+              <p className="section-kicker">My Portfolio</p>
 
-              <h2>Words move people. The works does the rest.</h2>
+              <h2>Words move people. The work does the rest.</h2>
 
               <p className="section-intro" style={{ marginTop: 16 }}>
-                A selection of campaigns, creative and growth work. Choose a
-                category to explore.
+               Explore selected work across words, visuals, digital experiences and everything in between.
               </p>
             </div>
 
