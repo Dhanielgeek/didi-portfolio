@@ -1,3 +1,4 @@
+
 import portraitUrl from './assets/myself.jpg.jpeg?url';
 
 // ─────────────────────────────────────────────────────────────
@@ -26,6 +27,14 @@ export const profile = {
       label: 'X',
       href: 'https://x.com/chubbyscribbler',
     },
+    {
+      label : "SubStack",
+      href: "https://open.substack.com/pub/ndidia"
+    }, 
+    {
+      label : "Facebook", 
+      href: "https://www.facebook.com/share/1CFwaVRziF/?mibextid=wwXIfr"
+    }
   ],
 
   recentClients: [

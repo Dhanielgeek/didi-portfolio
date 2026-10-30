@@ -1,16 +1,11 @@
 import { profile } from '../data'
+import SocialLinks from './SocialLinks'
 
 const navLinks = [
   { label: 'Home', href: '#top' },
   { label: 'About', href: '#about' },
   { label: 'Work', href: '#work' },
   { label: 'Contact', href: '#contact' },
-]
-
-const socialLinks = [
-  { label: 'LinkedIn', href: 'https://linkedin.com/in/your-handle' },
-  { label: 'Instagram', href: 'https://instagram.com/your-handle' },
-  { label: 'Twitter / X', href: 'https://x.com/your-handle' },
 ]
 
 export default function Footer() {
@@ -40,15 +35,12 @@ export default function Footer() {
 
         <div className="footer-col">
           <h4>Connect</h4>
-          <ul>
-            {socialLinks.map((link) => (
-              <li key={link.label}>
-                <a href={link.href} target="_blank" rel="noopener noreferrer">
-                  {link.label}
-                </a>
-              </li>
-            ))}
-          </ul>
+          <a href={`mailto:${profile.email}`} className="footer-email">
+            {profile.email}
+          </a>
+          <div className="social-icons footer-socials">
+            <SocialLinks />
+          </div>
         </div>
       </div>
 

@@ -244,6 +244,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
     background: transparent;
     border-color: #ffffff60
 }
+
 .button-quiet:hover {
     background: #ffffff12
 }
@@ -817,6 +818,7 @@ h2 {
         position: relative;
         top: auto;
         max-width: 490px
+
     }
     .about-image img {
         max-height: 580px
@@ -913,7 +915,7 @@ h2 {
     opacity: 1;
     transform: translateY(0)
 }
-.contact-details dd a {
+.contact-details dd:not(.social-icons) a {
     display: inline-block;
     margin-right: 14px
 }
@@ -1025,6 +1027,101 @@ h2 {
     border-color: var(--gold);
     color: var(--gold)
 }
+
+@media (max-width: 800px) {
+  .about-image {
+    display: none;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+.social-icons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+  padding: 0;
+  margin-left: 0;
+}
+
+
+.social-icon-box {
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  background: #ffffff;
+  color: var(--ink);
+  border: 1px solid rgba(38, 41, 31, 0.12);
+  border-radius: 6px;
+
+  text-decoration: none;
+  line-height: 1;
+
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.social-icon-box svg {
+  width: 16px;
+  height: 16px;
+  display: block;
+  flex-shrink: 0;
+  fill: currentColor;
+  transition: transform 0.25s ease;
+}
+
+.social-icon-box:hover,
+.social-icon-box:focus-visible {
+  background-color: var(--ink);
+  border-color: var(--ink);
+  color: var(--gold);          /* icon changes colour too */
+  transform: translateY(-2px);
+}
+
+.social-icon-box:hover svg,
+.social-icon-box:focus-visible svg {
+  transform: scale(1.15);      /* icon grows slightly */
+}
+
+
+
+
+/* Remove default description-list spacing */
+.contact-details dd {
+  margin-left: 0;
+}
+
+@media (max-width: 480px) {
+  .social-icons {
+    gap: 7px;
+  }
+
+  .social-icon-box {
+    width: 32px;
+    height: 32px;
+  }
+
+  .social-icon-box svg {
+    width: 15px;
+    height: 15px;
+  }
+}
+
 
 @media(prefers-reduced-motion:reduce) {
     .reveal,.hero-content>*,.hero-portrait {
