@@ -1,23 +1,25 @@
+
 import { useState, type ChangeEvent, type FormEvent } from 'react'
 import { profile } from '../data'
+import { Globe } from 'lucide-react'
+import {
+
+  SiFacebook,
+
+  SiSubstack,
+} from 'react-icons/si'
+import { FaLinkedin } from 'react-icons/fa6'
+import {RiInstagramFill, RiTwitterXFill} from "react-icons/ri"
 
 type Status = 'idle' | 'sending' | 'sent' | 'error'
 
 interface Values {
   name: string
   email: string
-  // budget: string
   message: string
 }
 
 type Errors = Partial<Record<keyof Values, string>>
-
-// const budgets = [
-//   'Under $1,000 a month',
-//   '$1,000 to $5,000 a month',
-//   'Over $5,000 a month',
-//   'Not sure yet',
-// ]
 
 function validate(values: Values): Errors {
   const errors: Errors = {}
@@ -41,7 +43,6 @@ export default function Contact() {
   const [values, setValues] = useState<Values>({
     name: '',
     email: '',
-
     message: '',
   })
 
@@ -92,9 +93,10 @@ export default function Contact() {
         if (!response.ok) {
           throw new Error('Request failed')
         }
+
+        setStatus('sent')
       } else {
         const body = `${values.message}
-
 
 From: ${values.name} (${values.email})`
 
@@ -103,9 +105,9 @@ From: ${values.name} (${values.email})`
         window.location.href = `mailto:${profile.email}?subject=${encodeURIComponent(
           subject,
         )}&body=${encodeURIComponent(body)}`
-      }
 
-      setStatus('sent')
+        setStatus('sent')
+      }
     } catch {
       setStatus('error')
     }
@@ -132,21 +134,42 @@ From: ${values.name} (${values.email})`
               </dd>
             </div>
 
-            <div>
-              <dt>Elsewhere</dt>
-              <dd>
-                {profile.socials.map((social) => (
-                  <a
-                    key={social.label}
-                    href={social.href}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    {social.label}{' '}
-                  </a>
-                ))}
-              </dd>
-            </div>
+         <div>
+  <dt>Socials</dt>
+
+  <dd className="social-icons">
+    {profile.socials.map((social) => {
+      const label = social.label.toLowerCase()
+
+      const Icon =
+        label === 'instagram'
+          ? RiInstagramFill
+          : label === 'linkedin'
+            ? FaLinkedin
+            : label === 'facebook'
+              ? SiFacebook
+              : label === 'x' || label === 'twitter'
+                ? RiTwitterXFill
+                : label === 'substack'
+                  ? SiSubstack
+                  : Globe
+
+      return (
+        <a
+          key={social.label}
+          href={social.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={social.label}
+          title={social.label}
+          className="social-icon-box"
+        >
+          <Icon size={20} />
+        </a>
+      )
+    })}
+  </dd>
+</div>
           </dl>
         </div>
 
@@ -211,23 +234,6 @@ From: ${values.name} (${values.email})`
                   </p>
                 )}
               </div>
-
-              {/* <div>
-                <label htmlFor="budget">Monthly marketing budget</label>
-
-                <select
-                  id="budget"
-                  name="budget"
-                  value={values.budget}
-                  onChange={onChange}
-                >
-                  {budgets.map((budget) => (
-                    <option key={budget} value={budget}>
-                      {budget}
-                    </option>
-                  ))}
-                </select>
-              </div> */}
 
               <div>
                 <label htmlFor="message">Leave a Message</label>
