@@ -16,9 +16,9 @@ export function usePrefersReducedMotion(): boolean {
   return reduced
 }
 
-const IN_VIEW: IntersectionObserverInit = { threshold: 0.15, rootMargin: '0px 0px -8% 0px' }
 
 /** Flips `seen` to true the first time the element scrolls into view. */
+
 export function useInView<T extends Element>() {
   const ref = useRef<T>(null)
   const reduced = usePrefersReducedMotion()
@@ -26,23 +26,36 @@ export function useInView<T extends Element>() {
 
   useEffect(() => {
     const el = ref.current
+
     if (!el) return
-    if (typeof IntersectionObserver === 'undefined') {
+
+    // Show content immediately when reduced motion is preferred.
+    if (reduced || typeof IntersectionObserver === 'undefined') {
       setSeen(true)
       return
     }
-    const io = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        setSeen(true)
-        io.disconnect()
-      }
-    }, IN_VIEW)
+
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setSeen(true)
+          io.disconnect()
+        }
+      },
+      {
+        threshold: 0,
+        rootMargin: '0px 0px 0px 0px',
+      },
+    )
+
     io.observe(el)
+
     return () => io.disconnect()
-  }, [])
+  }, [reduced])
 
   return { ref, seen: seen || reduced }
 }
+
 
 /** Returns the id of the section currently crossing the middle of the viewport. */
 export function useActiveSection(ids: string[]): string {
