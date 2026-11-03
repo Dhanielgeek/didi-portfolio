@@ -3,13 +3,11 @@ import { useState, type ChangeEvent, type FormEvent } from 'react'
 import { profile } from '../data'
 import { Globe } from 'lucide-react'
 import {
-
   SiFacebook,
-
   SiSubstack,
 } from 'react-icons/si'
 import { FaLinkedin } from 'react-icons/fa6'
-import {RiInstagramFill, RiTwitterXFill} from "react-icons/ri"
+import { RiInstagramFill, RiTwitterXFill } from 'react-icons/ri'
 
 type Status = 'idle' | 'sending' | 'sent' | 'error'
 
@@ -20,6 +18,9 @@ interface Values {
 }
 
 type Errors = Partial<Record<keyof Values, string>>
+
+const WEB3FORMS_ACCESS_KEY =
+  '693a440c-f5c9-437d-b749-10ec123081d5'
 
 function validate(values: Values): Errors {
   const errors: Errors = {}
@@ -80,35 +81,39 @@ export default function Contact() {
     setStatus('sending')
 
     try {
-      if (profile.formEndpoint) {
-        const response = await fetch(profile.formEndpoint, {
+      const formData = new FormData()
+
+      formData.append('access_key', WEB3FORMS_ACCESS_KEY)
+      formData.append('name', values.name.trim())
+      formData.append('email', values.email.trim())
+      formData.append('message', values.message.trim())
+      formData.append(
+        'subject',
+        `New website enquiry from ${values.name.trim()}`,
+      )
+
+      // Helps Web3Forms identify the source of the submission.
+      formData.append('from_name', 'Website Contact Form')
+
+      const response = await fetch(
+        'https://api.web3forms.com/submit',
+        {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json',
-          },
-          body: JSON.stringify(values),
-        })
+          body: formData,
+        },
+      )
 
-        if (!response.ok) {
-          throw new Error('Request failed')
-        }
+      const data: { success: boolean; message?: string } =
+        await response.json()
 
-        setStatus('sent')
-      } else {
-        const body = `${values.message}
-
-From: ${values.name} (${values.email})`
-
-        const subject = `Project enquiry from ${values.name}`
-
-        window.location.href = `mailto:${profile.email}?subject=${encodeURIComponent(
-          subject,
-        )}&body=${encodeURIComponent(body)}`
-
-        setStatus('sent')
+      if (!response.ok || !data.success) {
+        throw new Error(data.message || 'Message submission failed.')
       }
-    } catch {
+
+      setStatus('sent')
+
+    } catch (error) {
+      console.error('Contact form submission error:', error)
       setStatus('error')
     }
   }
@@ -121,7 +126,10 @@ From: ${values.name} (${values.email})`
 
           <h2>Tell me what you are trying to grow.</h2>
 
-          <p className="section-intro" style={{ marginTop: 20 }}>
+          <p
+            className="section-intro"
+            style={{ marginTop: 20 }}
+          >
             I reply within two working days, usually with a question or two
             and a rough idea of where I would start.
           </p>
@@ -130,59 +138,78 @@ From: ${values.name} (${values.email})`
             <div>
               <dt>Email</dt>
               <dd>
-                <a href={`mailto:${profile.email}`}>{profile.email}</a>
+                <a href={`mailto:${profile.email}`}>
+                  {profile.email}
+                </a>
               </dd>
             </div>
 
-         <div>
-  <dt>Socials</dt>
+            <div>
+              <dt>Connect</dt>
 
-  <dd className="social-icons">
-    {profile.socials.map((social) => {
-      const label = social.label.toLowerCase()
+              <dd className="social-icons">
+                {profile.socials.map((social) => {
+                  const label = social.label.toLowerCase()
 
-      const Icon =
-        label === 'instagram'
-          ? RiInstagramFill
-          : label === 'linkedin'
-            ? FaLinkedin
-            : label === 'facebook'
-              ? SiFacebook
-              : label === 'x' || label === 'twitter'
-                ? RiTwitterXFill
-                : label === 'substack'
-                  ? SiSubstack
-                  : Globe
+                  const Icon =
+                    label === 'instagram'
+                      ? RiInstagramFill
+                      : label === 'linkedin'
+                        ? FaLinkedin
+                        : label === 'facebook'
+                          ? SiFacebook
+                          : label === 'x' || label === 'twitter'
+                            ? RiTwitterXFill
+                            : label === 'substack'
+                              ? SiSubstack
+                              : Globe
 
-      return (
-        <a
-          key={social.label}
-          href={social.href}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={social.label}
-          title={social.label}
-          className="social-icon-box"
-        >
-          <Icon size={20} />
-        </a>
-      )
-    })}
-  </dd>
-</div>
+                  return (
+                    <a
+                      key={social.label}
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={social.label}
+                      title={social.label}
+                      className="social-icon-box"
+                    >
+                      <Icon size={20} />
+                    </a>
+                  )
+                })}
+              </dd>
+            </div>
           </dl>
         </div>
 
         <div>
           {status === 'sent' ? (
-            <div role="status">
-              <h3>Thanks, {values.name.split(' ')[0]}.</h3>
+            <div role="status" aria-live="polite">
+              <h3>
+                Thanks, {values.name.split(' ')[0]}.
+              </h3>
 
               <p>
-                {profile.formEndpoint
-                  ? 'Your message is on its way. Expect a reply within two working days.'
-                  : 'Your email app should have opened with the message ready to send. Press send there to finish.'}
+                Your message has been sent successfully.
+                Expect a reply within two working days.
               </p>
+
+              <button
+                type="button"
+                className="button"
+                onClick={() => {
+                  setValues({
+                    name: '',
+                    email: '',
+                    message: '',
+                  })
+                  setErrors({})
+                  setStatus('idle')
+                }}
+              >
+                Send another message
+              </button>
             </div>
           ) : (
             <form
@@ -196,6 +223,7 @@ From: ${values.name} (${values.email})`
                 <input
                   id="name"
                   name="name"
+                  type="text"
                   autoComplete="name"
                   value={values.name}
                   onChange={onChange}
@@ -203,6 +231,7 @@ From: ${values.name} (${values.email})`
                   aria-describedby={
                     errors.name ? 'name-error' : undefined
                   }
+                  required
                 />
 
                 {errors.name && (
@@ -226,6 +255,7 @@ From: ${values.name} (${values.email})`
                   aria-describedby={
                     errors.email ? 'email-error' : undefined
                   }
+                  required
                 />
 
                 {errors.email && (
@@ -248,6 +278,7 @@ From: ${values.name} (${values.email})`
                   aria-describedby={
                     errors.message ? 'message-error' : undefined
                   }
+                  required
                 />
 
                 {errors.message && (
@@ -263,12 +294,15 @@ From: ${values.name} (${values.email})`
                   disabled={status === 'sending'}
                   className="button"
                 >
-                  {status === 'sending' ? 'Sending…' : 'Send message ↗'}
+                  {status === 'sending'
+                    ? 'Sending…'
+                    : 'Send message ↗'}
                 </button>
 
                 {status === 'error' && (
                   <p role="alert">
-                    That did not send. Try again, or email{' '}
+                    Your message could not be sent.
+                    Please try again or email{' '}
                     {profile.email} directly.
                   </p>
                 )}
