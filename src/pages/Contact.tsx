@@ -74,9 +74,7 @@ export default function Contact() {
     const foundErrors = validate(values)
     setErrors(foundErrors)
 
-    if (Object.keys(foundErrors).length > 0) {
-      return
-    }
+    if (Object.keys(foundErrors).length > 0) return
 
     setStatus('sending')
 
@@ -91,8 +89,6 @@ export default function Contact() {
         'subject',
         `New website enquiry from ${values.name.trim()}`,
       )
-
-      // Helps Web3Forms identify the source of the submission.
       formData.append('from_name', 'Website Contact Form')
 
       const response = await fetch(
@@ -111,7 +107,6 @@ export default function Contact() {
       }
 
       setStatus('sent')
-
     } catch (error) {
       console.error('Contact form submission error:', error)
       setStatus('error')
@@ -124,14 +119,20 @@ export default function Contact() {
         <div>
           <p className="section-kicker">Get in touch</p>
 
-          <h2>Tell me what you are trying to grow.</h2>
+          <h2>Have something in mind? Let's talk.</h2>
 
           <p
             className="section-intro"
             style={{ marginTop: 20 }}
           >
-            I reply within two working days, usually with a question or two
-            and a rough idea of where I would start.
+            Whether you have a project, an idea, a question or simply
+            want to explore the possibility of working together,
+            I'd love to hear from you.
+          </p>
+
+          <p className="section-intro" style={{ marginTop: 16 }}>
+            I'll get back to you within 1–2 working days.
+            Looking forward to hearing from you!
           </p>
 
           <dl className="contact-details">
@@ -192,7 +193,7 @@ export default function Contact() {
 
               <p>
                 Your message has been sent successfully.
-                Expect a reply within two working days.
+                Expect a reply within 1–2 working days.
               </p>
 
               <button
