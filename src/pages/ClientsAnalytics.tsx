@@ -1,52 +1,62 @@
 /* eslint-disable react-hooks/set-state-in-effect */
 import { useEffect, useRef, useState } from "react";
 
-type Stat = {
-  label: string;
-  value: number;      // number to count up to
-  decimals?: number;  // e.g. 1 for 77.8K
-  suffix?: string;    // "K", "%"
-  prefix?: string;    // "+"
-  before?: string;    // small "was ..." text
-  change?: string;    // e.g. "+306.7%"
-};
 
-type Group = { title: string; period: string; stats: Stat[] };
+type Stat = {
+  label: string
+  value: number
+  decimals?: number
+  suffix?: string
+  prefix?: string
+  before?: string
+  change?: string
+}
+
+type Group = {
+  client: string
+  title: string
+  period: string
+  stats: Stat[]
+}
 
 const groups: Group[] = [
   {
-    title: "Instagram Growth",
-    period: "Before vs After (30 days)",
+    client: 'Loford Properties',
+    title: 'Instagram Growth',
+    period: 'Before vs After (30 days)',
     stats: [
-      { label: "Views", value: 1414, before: "196", change: "+621%" },
-      { label: "Profile Activity", value: 61, before: "32", change: "+306.7%" },
-      { label: "Profile Visits", value: 57, before: "32", change: "+307.1%" },
-      { label: "External Link Taps", value: 4, before: "0", change: "+300%" },
+      { label: 'Views', value: 1414, before: '196', change: '+621%' },
+      { label: 'Profile Activity', value: 61, before: '32', change: '+306.7%' },
+      { label: 'Profile Visits', value: 57, before: '32', change: '+307.1%' },
+      { label: 'External Link Taps', value: 4, before: '0', change: '+300%' },
     ],
   },
   {
-    title: "Instagram Statistics",
-    period: "August → September",
+    client: 'Yago Cakes',
+    title: 'Instagram Statistics',
+    period: 'August → September',
     stats: [
-      { label: "Views", value: 77.8, decimals: 1, suffix: "K", before: "3.7K" },
-      { label: "Interactions", value: 2, suffix: "K", before: "102" },
-      { label: "Follows", value: 90, before: "49" },
-      { label: "Messages", value: 85, before: "14", change: "78% response rate" },
-      { label: "Reach", value: 21, suffix: "K", before: "419", change: "+4.9K%" },
+      { label: 'Views', value: 77.8, decimals: 1, suffix: 'K', before: '3.7K' },
+      { label: 'Interactions', value: 2, suffix: 'K', before: '102' },
+      { label: 'Follows', value: 90, before: '49' },
+      { label: 'Messages', value: 85, before: '14', change: '78% response rate' },
+      { label: 'Reach', value: 21, suffix: 'K', before: '419', change: '+4.9K%' },
     ],
   },
   {
-    title: "TikTok Statistics",
-    period: "August → September",
+    client: 'Yago Cakes',
+    title: 'TikTok Statistics',
+    period: 'August → September',
     stats: [
-      { label: "Profile Views", value: 145, before: "21", change: "+590.5%" },
-      { label: "Likes", value: 1.1, decimals: 1, suffix: "K", before: "44", change: "+2481.8%" },
-      { label: "Net Followers", value: 45, before: "17", change: "+164.7%" },
-      { label: "Comments", value: 63, before: "8", change: "+687.5%" },
-      { label: "Reach", value: 8.5, decimals: 1, suffix: "K", before: "541", change: "+1472.1%" },
+      { label: 'Profile Views', value: 145, before: '21', change: '+590.5%' },
+      { label: 'Likes', value: 1.1, decimals: 1, suffix: 'K', before: '44', change: '+2481.8%' },
+      { label: 'Net Followers', value: 45, before: '17', change: '+164.7%' },
+      { label: 'Comments', value: 63, before: '8', change: '+687.5%' },
+      { label: 'Reach', value: 8.5, decimals: 1, suffix: 'K', before: '541', change: '+1472.1%' },
     ],
   },
-];
+]
+
 
 /* ---------- count-up hook ---------- */
 const useCountUp = (target: number, decimals = 0, start: boolean, duration = 1800) => {
@@ -139,7 +149,11 @@ const ClientsAnalytics = () => {
         {groups.map((group) => (
           <div className="stat-group" key={group.title}>
             <div className="stat-group-head">
-              <h3>{group.title}</h3>
+               <div>
+    <span className="stat-client">{group.client}</span>
+    <h3>{group.title}</h3>
+  </div>
+            
               <span>{group.period}</span>
             </div>
 
